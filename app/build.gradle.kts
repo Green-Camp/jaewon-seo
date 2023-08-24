@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+val navVersion by extra("2.4.0")
+
 android {
     namespace = "com.shoppi.app"
     compileSdk = 33
@@ -35,6 +37,8 @@ android {
     }
 }
 
+
+
 dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -46,4 +50,8 @@ dependencies {
 
     //Timber
     implementation("com.jakewharton.timber:timber:4.7.1")
+
+    //Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 }
