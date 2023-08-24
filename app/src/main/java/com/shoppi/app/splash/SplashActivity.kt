@@ -1,8 +1,9 @@
-package com.shoppi.app
+package com.shoppi.app.splash
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.shoppi.app.home.MainActivity
 
 class SplashActivity : AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {

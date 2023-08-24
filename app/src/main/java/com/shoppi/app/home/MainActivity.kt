@@ -1,8 +1,9 @@
-package com.shoppi.app
+package com.shoppi.app.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.shoppi.app.Util.logD
+import com.shoppi.app.R
+import com.shoppi.app.util.logD
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
