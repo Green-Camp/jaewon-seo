@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.shoppi.app.R
 
 class HomeFragment : Fragment() {
@@ -20,10 +21,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById<View>(R.id.btn_product_detail)
         button.setOnClickListener {
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.add(R.id.container_main, ProductDetailFragment())
-            transaction.commit()
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_product_detail)
         }
-
     }
 }
