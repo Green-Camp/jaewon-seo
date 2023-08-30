@@ -1,9 +1,22 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    //kapt를 사용하기 위해서 추가
+    id("kotlin-kapt")
 }
 
-val navVersion by extra("2.4.0")
+val navVersion: String by rootProject.extra
+val coreKtxVersion: String by rootProject.extra
+val appCompatVersion: String by rootProject.extra
+val materialVersion: String by rootProject.extra
+val constraintLayoutVersion: String by rootProject.extra
+val junitVersion: String by rootProject.extra
+val androidJUnitVersion: String by rootProject.extra
+val espressoCoreVersion: String by rootProject.extra
+val timberVersion: String by rootProject.extra
+val coilVersion: String by rootProject.extra
+val glideVersion: String by rootProject.extra
 
 android {
     namespace = "com.shoppi.app"
@@ -28,30 +41,40 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
 
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation("androidx.core:core-ktx:$coreKtxVersion")
+    implementation("androidx.appcompat:appcompat:$appCompatVersion")
+    implementation("com.google.android.material:material:$materialVersion")
+    implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
+    testImplementation("junit:junit:$junitVersion")
+    androidTestImplementation("androidx.test.ext:junit:$androidJUnitVersion")
+    androidTestImplementation("androidx.test.espresso:espresso-core:$espressoCoreVersion")
 
-    //Timber
-    implementation("com.jakewharton.timber:timber:4.7.1")
+    // Timber
+    implementation("com.jakewharton.timber:timber:$timberVersion")
 
-    //Navigation
+    // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    // Coil
+    implementation("io.coil-kt:coil:$coilVersion")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:$glideVersion")
+    kapt("com.github.bumptech.glide:compiler:$glideVersion")
 }
