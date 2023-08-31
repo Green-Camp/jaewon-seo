@@ -5,15 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
+import com.shoppi.app.R
 import com.shoppi.app.databinding.FragmentHomeBinding
 import com.shoppi.app.home.adapter.HomeBannerAdapter
-import com.shoppi.app.home.data.Banner
-import com.shoppi.app.home.data.BannerBadge
 import com.shoppi.app.home.data.HomeData
-import com.shoppi.app.home.data.Title
 import com.shoppi.app.home.module.GlideApp
-import org.json.JSONObject
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -42,7 +40,7 @@ class HomeFragment : Fragment() {
 
         if (!homeJsonString.isNullOrEmpty()) {
             val gson = Gson()
-            val homeData = gson.fromJson(homeJsonString,HomeData::class.java)
+            val homeData = gson.fromJson(homeJsonString, HomeData::class.java)
 
             with(binding) {
                 tvHomeTitleText.text = homeData.title.text
@@ -54,6 +52,20 @@ class HomeFragment : Fragment() {
                 vpHomeBanner.adapter = HomeBannerAdapter().apply {
                     submitList(homeData.topBanner)
                 }
+                val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
+                val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
+
+                val screenWidth = resources.displayMetrics.widthPixels
+                val offset = screenWidth - pageWidth - pageMargin
+
+                vpHomeBanner.offscreenPageLimit = 3
+                vpHomeBanner.setPageTransformer { page, position ->
+                    page.translationX = position * -offset
+                }
+
+                TabLayoutMediator(tlHomeBannerIndicator, vpHomeBanner) { tab, position ->
+
+                }.attach()
             }
         }
     }
