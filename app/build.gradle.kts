@@ -77,4 +77,7 @@ dependencies {
     // Glide
     implementation("com.github.bumptech.glide:glide:$glideVersion")
     kapt("com.github.bumptech.glide:compiler:$glideVersion")
+
+    // GSON
+    implementation("com.google.code.gson:gson:2.8.8")
 }

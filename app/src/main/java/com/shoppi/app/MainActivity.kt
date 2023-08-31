@@ -1,11 +1,10 @@
-package com.shoppi.app.home
+package com.shoppi.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.shoppi.app.R
 import com.shoppi.app.util.logD
 import timber.log.Timber
 

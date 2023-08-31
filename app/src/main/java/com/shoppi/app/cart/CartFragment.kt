@@ -1,4 +1,4 @@
-package com.shoppi.app.home
+package com.shoppi.app.cart
 
 import android.os.Bundle
 import android.view.LayoutInflater

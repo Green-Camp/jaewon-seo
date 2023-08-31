@@ -5,7 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.gson.Gson
 import com.shoppi.app.databinding.FragmentHomeBinding
+import com.shoppi.app.home.adapter.HomeBannerAdapter
+import com.shoppi.app.home.data.Banner
+import com.shoppi.app.home.data.BannerBadge
+import com.shoppi.app.home.data.HomeData
 import com.shoppi.app.home.data.Title
 import com.shoppi.app.home.module.GlideApp
 import org.json.JSONObject
@@ -33,25 +38,22 @@ class HomeFragment : Fragment() {
 
     private fun setJsonData() {
         val assetLoader = AssetLoader()
-        val homeData = assetLoader.getJsonString(requireContext(), "home.json")
+        val homeJsonString = assetLoader.getJsonString(requireContext(), "home.json")
 
-        if (!homeData.isNullOrEmpty()) {
-            val jsonObject = JSONObject(homeData)
-            val title = jsonObject.getJSONObject("title")
-            val text = title.getString("text")
-            val iconUrl = title.getString("icon_url")
-            val titleValue = Title(text, iconUrl)
+        if (!homeJsonString.isNullOrEmpty()) {
+            val gson = Gson()
+            val homeData = gson.fromJson(homeJsonString,HomeData::class.java)
 
             with(binding) {
-                tvHomeTitleText.text = titleValue.text
+                tvHomeTitleText.text = homeData.title.text
 
-                //Coil
-                //ivHomeTitleLogo.load(iconUrl)
-
-                //Glide
                 GlideApp.with(requireContext())
-                    .load(iconUrl)
+                    .load(homeData.title.iconUrl)
                     .into(ivHomeTitleLogo)
+
+                vpHomeBanner.adapter = HomeBannerAdapter().apply {
+                    submitList(homeData.topBanner)
+                }
             }
         }
     }
