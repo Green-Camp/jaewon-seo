@@ -5,19 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.gson.Gson
 import com.shoppi.app.R
 import com.shoppi.app.databinding.FragmentHomeBinding
-import com.shoppi.app.ui.home.adapter.HomeBannerAdapter
-import com.shoppi.app.ui.home.data.HomeData
 import com.shoppi.app.home.module.GlideApp
+import com.shoppi.app.ui.home.adapter.HomeBannerAdapter
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding
         get() = requireNotNull(_binding) { "binding is null" }
-
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,18 +38,19 @@ class HomeFragment : Fragment() {
         val homeJsonString = assetLoader.getJsonString(requireContext(), "home.json")
 
         if (!homeJsonString.isNullOrEmpty()) {
-            val gson = Gson()
-            val homeData = gson.fromJson(homeJsonString, HomeData::class.java)
 
             with(binding) {
-                tvHomeTitleText.text = homeData.title.text
+                viewModel.title.observe(viewLifecycleOwner) { title ->
+                    tvHomeTitleText.text = title.text
+                    GlideApp.with(requireContext())
+                        .load(title.iconUrl)
+                        .into(ivHomeTitleLogo)
+                }
 
-                GlideApp.with(requireContext())
-                    .load(homeData.title.iconUrl)
-                    .into(ivHomeTitleLogo)
-
-                vpHomeBanner.adapter = HomeBannerAdapter().apply {
-                    submitList(homeData.topBanner)
+                viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
+                    vpHomeBanner.adapter = HomeBannerAdapter().apply {
+                        submitList(banners)
+                    }
                 }
 
                 val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
