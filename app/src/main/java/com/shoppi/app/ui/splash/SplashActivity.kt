@@ -1,4 +1,4 @@
-package com.shoppi.app.splash
+package com.shoppi.app.ui.splash
 
 import android.content.Intent
 import android.os.Bundle

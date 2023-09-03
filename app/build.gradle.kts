@@ -80,4 +80,7 @@ dependencies {
 
     // GSON
     implementation("com.google.code.gson:gson:2.8.8")
+
+    //fragment-ktx
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
 }

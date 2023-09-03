@@ -1,4 +1,4 @@
-package com.shoppi.app.home
+package com.shoppi.app.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import com.shoppi.app.R
 import com.shoppi.app.databinding.FragmentHomeBinding
-import com.shoppi.app.home.adapter.HomeBannerAdapter
-import com.shoppi.app.home.data.HomeData
+import com.shoppi.app.ui.home.adapter.HomeBannerAdapter
+import com.shoppi.app.ui.home.data.HomeData
 import com.shoppi.app.home.module.GlideApp
 
 class HomeFragment : Fragment() {
@@ -52,6 +52,7 @@ class HomeFragment : Fragment() {
                 vpHomeBanner.adapter = HomeBannerAdapter().apply {
                     submitList(homeData.topBanner)
                 }
+
                 val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
                 val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
 
@@ -64,7 +65,6 @@ class HomeFragment : Fragment() {
                 }
 
                 TabLayoutMediator(tlHomeBannerIndicator, vpHomeBanner) { tab, position ->
-
                 }.attach()
             }
         }

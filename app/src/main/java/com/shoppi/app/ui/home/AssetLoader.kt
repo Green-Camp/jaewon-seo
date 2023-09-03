@@ -1,4 +1,4 @@
-package com.shoppi.app.home
+package com.shoppi.app.ui.home
 
 import android.content.Context
 

@@ -1,4 +1,4 @@
-package com.shoppi.app.home.adapter
+package com.shoppi.app.ui.home.adapter
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.shoppi.app.R
 import com.shoppi.app.databinding.ItemHomeBannerBinding
-import com.shoppi.app.home.data.Banner
+import com.shoppi.app.ui.home.data.Banner
 import kotlin.math.roundToInt
 
 class HomeBannerAdapter :
