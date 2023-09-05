@@ -1,4 +1,4 @@
-package com.shoppi.app.ui.util
+package com.shoppi.app.util
 
 import androidx.fragment.app.Fragment
 import timber.log.Timber

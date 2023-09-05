@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.shoppi.app.R
 import com.shoppi.app.databinding.ItemHomeBannerBinding
-import com.shoppi.app.ui.home.data.Banner
+import com.shoppi.app.model.Banner
 import kotlin.math.roundToInt
 
 class HomeBannerAdapter :

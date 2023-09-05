@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.shoppi.app.ui.util.logD
+import com.shoppi.app.util.logD
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
