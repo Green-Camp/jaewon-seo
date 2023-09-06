@@ -4,6 +4,9 @@ plugins {
 
     //kapt를 사용하기 위해서 추가
     id("kotlin-kapt")
+
+    //firebase
+    id("com.google.gms.google-services")
 }
 
 val navVersion: String by rootProject.extra
@@ -84,4 +87,21 @@ dependencies {
 
     //fragment-ktx
     implementation("androidx.fragment:fragment-ktx:1.4.1")
+
+    //Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+
+    //ViewModel-ktx
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+
+    //Network
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.1"))
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
 }

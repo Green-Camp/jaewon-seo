@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.shoppi.app.R
+import com.shoppi.app.common.ViewModelFactory
+import com.shoppi.app.util.logD
 
 class CategoryFragment : Fragment() {
-
+    private val viewModel: CategoryViewModel by viewModels {ViewModelFactory(requireContext()) }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,5 +22,9 @@ class CategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.items.observe(viewLifecycleOwner) {
+            logD("items: ${it.toString()}")
+        }
     }
 }
