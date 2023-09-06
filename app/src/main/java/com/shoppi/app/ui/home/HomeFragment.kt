@@ -31,19 +31,20 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setJsonData()
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        setToolbar()
+        setTopBanners()
     }
 
-    private fun setJsonData() {
+    private fun setToolbar() {
+        viewModel.title.observe(viewLifecycleOwner) { title ->
+            binding.tvHomeTitleText.text = title.text
+        }
+    }
 
+    private fun setTopBanners() {
         with(binding) {
-            viewModel.title.observe(viewLifecycleOwner) { title ->
-                tvHomeTitleText.text = title.text
-                GlideApp.with(requireContext())
-                    .load(title.iconUrl)
-                    .into(ivHomeTitleLogo)
-            }
-
             vpHomeBanner.adapter = HomeBannerAdapter().apply {
                 viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
                     submitList(banners)

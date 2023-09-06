@@ -1,76 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <data>
+        <variable
+            name="title"
+            type="com.shoppi.app.model.Title" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_product_detail"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:contentInsetStart="0dp"
-            app:layout_scrollFlags="scroll|enterAlways">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_home_title_text"
-                style="@style/TextHeadline5.black02.Bold"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_product_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="72dp"
-                android:layout_marginBottom="24dp"
-                android:maxLines="2"
-                tools:text="IVY님, 이런 상품\n어때요?" />
+                app:contentInsetStart="0dp"
+                app:layout_scrollFlags="scroll|enterAlways">
 
-            <ImageView
-                android:id="@+id/iv_home_title_logo"
-                android:layout_width="68dp"
-                android:layout_height="68dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="31dp"
-                android:layout_marginEnd="4dp"
-                android:scaleType="center"
-                tools:src="@drawable/img_logo" />
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/vp_home_banner"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tv_home_title_text"
+                    style="@style/TextHeadline5.black02.Bold"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_gravity="left"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="72dp"
+                    android:layout_marginBottom="24dp"
+                    android:maxLines="2"
+                    android:text="@{title.text}"
+                    tools:text="IVY님, 이런 상품\n어때요?" />
 
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tl_home_banner_indicator"
-                    android:layout_width="0dp"
-                    android:layout_height="45dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/vp_home_banner"
-                    app:tabBackground="@drawable/selc_vp_indicator"
-                    app:tabGravity="center"
-                    app:tabIndicatorHeight="0dp" />
+                <ImageView
+                    android:id="@+id/iv_home_title_logo"
+                    imageUrl="@{title.iconUrl}"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginEnd="4dp"
+                    android:scaleType="center"
+                    tools:src="@drawable/img_logo" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.Toolbar>
 
-        </androidx.core.widget.NestedScrollView>
-    </com.google.android.material.appbar.AppBarLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vp_home_banner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tl_home_banner_indicator"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/vp_home_banner"
+                        app:tabBackground="@drawable/selc_vp_indicator"
+                        app:tabGravity="center"
+                        app:tabIndicatorHeight="0dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -37,38 +37,8 @@ class HomeBannerAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(banner: Banner) {
             // ViewBinding을 사용하여 뷰에 데이터 바인딩
-            with(binding) {
-                ivBannerImage.load(banner.backgroundImageUrl)
-                tvBannerBadge.background =
-                    ColorDrawable(Color.parseColor(banner.badge.backgroundColor))
-                tvBannerBadge.text = banner.badge.label
-                tvBannerTitle.text = banner.label
-
-                ivBannerDetailThumbnail.load(banner.productDetail.thumbnailImageUrl)
-                tvBannerDetailLabel.text = banner.productDetail.brandName
-
-                calculateDiscountAmount(
-                    tvBannerDetailProductDiscountPrice,
-                    banner.productDetail.discountRate,
-                    banner.productDetail.price
-                )
-                applyPriceFormat(
-                    tvBannerDetailProductDiscountPriceOrigin,
-                    banner.productDetail.price
-                )
-                tvBannerDetailProductLabel.text = banner.productDetail.label
-                tvBannerDetailProductDiscountRate.text = "${banner.productDetail.discountRate}%"
-            }
-        }
-
-        fun calculateDiscountAmount(view: TextView, discountRate: Int, price: Int) {
-            val discountAmount = (((100 - discountRate) / 100.0) * price).roundToInt()
-            applyPriceFormat(view, discountAmount)
-        }
-
-        fun applyPriceFormat(view: TextView, price: Int) {
-            val deciamlFormat = java.text.DecimalFormat("#,###")
-            view.text = deciamlFormat.format(price) + "원"
+            binding.banner = banner
+            binding.executePendingBindings()
         }
     }
 }
