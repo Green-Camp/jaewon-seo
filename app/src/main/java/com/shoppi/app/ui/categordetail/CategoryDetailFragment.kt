@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.shoppi.app.common.KEY_CATEGORY_ID
+import androidx.recyclerview.widget.ConcatAdapter
 import com.shoppi.app.common.KEY_CATEGORY_LABEL
 import com.shoppi.app.databinding.FragmentCategoryDetailBinding
+import com.shoppi.app.ui.categordetail.adapter.CategoryPromotionAdapter
+import com.shoppi.app.ui.categordetail.adapter.CategorySectionTitleAdapter
 
-class CategoryDetailFragment: Fragment() {
+class CategoryDetailFragment : Fragment() {
     private lateinit var binding: FragmentCategoryDetailBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,9 +26,18 @@ class CategoryDetailFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.lifecycleOwner = viewLifecycleOwner
+        setToolBar()
+        setListAdapter()
+    }
 
-        val categoryId = requireArguments().getString(KEY_CATEGORY_ID)
+    private fun setToolBar() {
         val categoryLabel = requireArguments().getString(KEY_CATEGORY_LABEL)
         binding.tbCategoryDetail.title = categoryLabel
+    }
+
+    private fun setListAdapter() {
+        val titleAdapter = CategorySectionTitleAdapter()
+        val promotionAdapter = CategoryPromotionAdapter()
+        binding.rvCategoryDetail.adapter = ConcatAdapter(titleAdapter, promotionAdapter)
     }
 }
