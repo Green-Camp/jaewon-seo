@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.shoppi.app.databinding.ItemCategoryBinding
 import com.shoppi.app.model.Category
+import com.shoppi.app.ui.category.CategoryViewModel
 
-class CategoryAdapter :
+class CategoryAdapter(private val viewModel: CategoryViewModel) :
     ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(CategoryDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val binding =
@@ -20,9 +21,10 @@ class CategoryAdapter :
         holder.bind(getItem(position))
     }
 
-    class CategoryViewHolder(private val binding: ItemCategoryBinding) :
+    inner class CategoryViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
+            binding.viewModel = viewModel
             binding.category = category
             binding.executePendingBindings()
         }

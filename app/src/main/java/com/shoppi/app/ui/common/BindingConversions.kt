@@ -1,4 +1,4 @@
-package com.shoppi.app.common
+package com.shoppi.app.ui.common
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

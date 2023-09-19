@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.shoppi.app.R
-import com.shoppi.app.common.ViewModelFactory
+import com.shoppi.app.ui.common.ViewModelFactory
 import com.shoppi.app.databinding.FragmentHomeBinding
 import com.shoppi.app.module.GlideApp
 import com.shoppi.app.ui.home.adapter.HomeBannerAdapter

@@ -1,4 +1,4 @@
-package com.shoppi.app.common
+package com.shoppi.app.ui.common
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

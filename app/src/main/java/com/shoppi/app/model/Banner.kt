@@ -8,7 +8,7 @@ data class Banner(
     val badge: BannerBadge,
     val label: String,
     @SerializedName("product_detail")
-    val productDetail: ProductDetail
+    val productDetail: Product
 )
 
 data class BannerBadge(
@@ -17,14 +17,16 @@ data class BannerBadge(
     val backgroundColor: String
 )
 
-data class ProductDetail(
+data class Product(
     @SerializedName("brand_name")
-    val brandName: String,
+    val brandName: String?,
     val label: String,
     @SerializedName("discount_rate")
     val discountRate: Int,
     @SerializedName("thumbnail_image_url")
     val thumbnailImageUrl: String,
+    @SerializedName("representative_image_url")
+    val representativeImageUrl: String,
     val price: Int,
     @SerializedName("original_price")
     val productId: String
