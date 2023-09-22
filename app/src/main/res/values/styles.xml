@@ -4,6 +4,14 @@
     <style name="Circle">
         <item name="cornerSize">50%</item>
     </style>
+
+    <style name="RoundedBig">
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="RoundedMedium">
+        <item name="cornerSize">8dp</item>
+    </style>
     <!-- Text Style -->
     <style name="TextHeadline5.black02" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textColor">@color/shoppi_black_01</item>
@@ -75,6 +83,15 @@
         <item name="android:textColor">@color/shoppi_black_01</item>
     </style>
 
+    <style name="TextCaption1" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">@color/shoppi_black_01</item>
+    </style>
+
+    <style name="TextCaption1.White" parent="TextCaption1">
+        <item name="android:textColor">@color/shoppi_white</item>
+    </style>
+
+
     <style name="TextSubtitle3.Grey03">
         <item name="android:textColor">@color/shoppi_grey_03</item>
     </style>
@@ -83,10 +100,6 @@
         <item name="android:textColor">@color/shoppi_grey_05</item>
     </style>
 
-
-    <style name="TextCaption1" parent="TextAppearance.AppCompat.Caption">
-        <item name="android:textColor">@color/shoppi_black_01</item>
-    </style>
 
     <style name="TextCaption2" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textSize">11sp</item>
@@ -100,4 +113,5 @@
     <style name="TextCaption2.White.Bold">
         <item name="android:textStyle">bold</item>
     </style>
+
 </resources>

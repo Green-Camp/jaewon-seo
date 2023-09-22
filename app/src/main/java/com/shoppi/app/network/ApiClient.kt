@@ -2,11 +2,13 @@ package com.shoppi.app.network
 
 import com.shoppi.app.model.Category
 import com.shoppi.app.model.CategoryDetail
+import com.shoppi.app.model.Product
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiClient {
     @GET("categories.json")
@@ -15,6 +17,8 @@ interface ApiClient {
     @GET("fashion_female.json")
     suspend fun getCategory(): CategoryDetail
 
+    @GET("products/{productId}.json")
+    suspend fun getProductDetail(@Path("productId") productId: String): Product
     companion object {
         private const val BASE_URL =
             "https://shoppi-ea95d-default-rtdb.asia-southeast1.firebasedatabase.app/"

@@ -1,20 +1,16 @@
 package com.shoppi.app.ui.home.adapter
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.shoppi.app.R
 import com.shoppi.app.databinding.ItemHomeBannerBinding
 import com.shoppi.app.model.Banner
-import kotlin.math.roundToInt
+import com.shoppi.app.ui.home.HomeViewModel
 
-class HomeBannerAdapter :
+class HomeBannerAdapter(private val viewModel: HomeViewModel) :
     ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerViewHolder {
         //뷰 생성
@@ -33,12 +29,13 @@ class HomeBannerAdapter :
     }
 
     //inflate한 뷰를 ViewHolder에 넘겨줌
-    class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) :
+    inner class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(banner: Banner) {
             // ViewBinding을 사용하여 뷰에 데이터 바인딩
             binding.banner = banner
             binding.executePendingBindings()
+            binding.viewModel = viewModel
         }
     }
 }
